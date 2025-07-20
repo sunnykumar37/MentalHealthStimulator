@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "MentalHealthSimulator/client/package.json",
+      "use": "@vercel/next"
+    },
+    {
+      "src": "MentalHealthSimulator/server/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "MentalHealthSimulator/server/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "MentalHealthSimulator/client/$1"
+    }
+  ],
+  "env": {
+    "MONGODB_URI": "@mongodb-uri",
+    "JWT_SECRET": "@jwt-secret"
+  }
+} 
